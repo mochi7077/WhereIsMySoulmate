@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 下載按鈕樣式Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>月老學堂</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font: 400 15px/1.8 "Lato", sans-serif;
+            /* color: red; */
+        }
+
+        /* 背景圖 */
+        .bgimg-1,
+        .bgimg-2,
+        .bgimg-3 {
+            position: relative;
+            opacity: 0.75;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .bgimg-1 {
+            background-image: url("./img/Meow.png");
+            min-height: 100%;
+        }
+
+        .bgimg-2 {
+            background-image: url("./img/Meow2.png");
+            min-height: 400px;
+        }
+
+        .bgimg-3 {
+            background-image: url("./img/Meow3.jpg");
+            min-height: 400px;
+        }
+
+        .caption {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            color: #000;
+        }
+
+        .caption span.border {
+            background-color: #111;
+            color: #fff;
+            padding: 18px;
+            font-size: 25px;
+            letter-spacing: 10px;
+        }
+
+        h3 {
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font: 20px "Lato", sans-serif;
+            color: #111;
+        }
+
+        /* Turn off parallax scrolling for tablets and phones */
+        @media only screen and (max-device-width: 1024px) {
+
+            .bgimg-1,
+            .bgimg-2,
+            .bgimg-3 {
+                background-attachment: scroll;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            padding: 64px;
+
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both
+        }
+
+        .column-66 {
+            float: left;
+            width: 66.66666%;
+            padding: 20px;
+            line-height: 2.5;
+        }
+
+        .column-33 {
+            float: left;
+            width: 33.33333%;
+            padding: 20px;
+        }
+
+        .large-font {
+            font-size: 48px;
+        }
+
+        img {
+            display: block;
+            height: auto;
+            max-width: 100%;
+        }
+
+        @media screen and (max-width: 1000px) {
+
+            .column-66,
+            .column-33 {
+                width: 100%;
+                text-align: center;
+            }
+
+            img {
+                margin: auto;
+            }
+        }
+
+        /* 下載按鈕加入 */
+
+        .btn {
+            background-color: #FF6363;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+            background-color: #DB0000;
+        }
+
+        a,
+        a:link,
+        a:visited {
+            color: white;
+            text-decoration: none
+        }
+
+
+
+        /* 影片加入 */
+
+        .vdo {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio */
+        }
+
+        .responsive-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .seesee {
+            cursor: pointer;
+        }
+
+
+        /* Darker background on mouse-over */
+        .seesee:hover {
+            background-color: pink;
+        }
+
+
+
+
+
+    </style>
+
+    <!-- 導覽列加入 -->
+    <link href="topnav.css" rel="stylesheet">
+    <!-- 右方滾輪加入 -->
+    <link href="scrollbar.css" rel="stylesheet">
+
+    
+
+</head>
+
+<body>
+
+    <!-- 以下是上方欄 -->
+    <b>
+        <div class="topnav" id="myTopnav" style="display:flex;background-color: #B95756;opacity: 0.8;">
+          <a href="my_byebye.html" class="active" style="flex:1;font-size: 20px">月老學堂<br><span style="font-size: 10px;">문 올드 스쿨</span></a>
+          <a href="my_ask.html" style="flex:1;font-size: 20px">線上求籤<br><span style="font-size: 10px;">온라인 기도</span></a>
+          <a href="my_index.html" style="flex:2;font-size: 20px">姻緣在哪兒<br><span style="font-size: 10px;">운명은 어디에</span></a>
+          <a href="my_product.html" style="flex:1;font-size: 20px">代客拜拜<br><span style="font-size: 10px;">내가 하나님을 섬기도록 도와줘</span></a>
+          <a href="my_login.html" style="flex:1;font-size: 20px">會員中心<br><span style="font-size: 10px;">회원센터</span></a>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <!-- 響應式 -->
+          </a>
+        </div>
+      </b>
+
+
+
+    <div class="bgimg-1">
+        <div class="container">
+            <div class="row">
+                <div class="column-66">
+                    <!-- -加入文字邊框屬性webkit-text-stroke -->
+                    <h1 class="large-font" style="color:#fff;-webkit-text-stroke: 2px #A80000;"><b>為什麼要拜月老？</b></h1>
+                    <p style="color:#fff;-webkit-text-stroke: 0.5px #FFC559;">
+                        <b>月下老人是主司緣分的神明，除了求感情、斬爛桃花外，其他包含婚姻遇到障礙想祈求解答，或者希望能改善人際關係，祈求工作崗位上的緣分等，都可以向月老許願締結善緣，只要用心祈求，相信月老一定會幫忙的！</b>
+                    </p>
+                    <!-- fa fa-download是下載圖案 -->
+                    <br><br>
+                    <button class="btn">
+                        <a href="./game.zip" download="game.zip">
+                            <i class="fa fa-download"></i> 攔截姻緣線</a></button>
+
+                </div>
+                <div class="column-33">
+                    <img src="./img/moonold.png" width="800" height="600">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+        <h3 style="text-align:center;">拜月老注意事項</h3>
+        <p style="text-align:center;">千萬不要拜錯了！全台最強嫁娶之神月老正確參拜之術！10點步驟學起來</p>
+        <div class="vdo">
+            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/OPW-6kPksAs"
+                title="千萬不要拜錯了！全台最強嫁娶之神月老正確參拜之術！10點步驟學起來 | 劉芒" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </iframe>
+        </div>
+    </div>
+
+
+    <div style="position:relative;">
+        <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+            <p>對著螢幕拜拜或是點虛擬光明燈，卻總是有不夠誠心、無法完整表達心意給神祇的疑慮嗎？【姻緣在哪兒】團隊全新推出代客拜拜服務！不受任何時間與地點的限制，完整的為您將心願完整傳達給神明，祈求心想事成，請點選
+        <span  class="seesee"><a href="./my_product.html"><u>【查看更多】</u></a></span></p>
+        </div>
+    </div>
+
+    <div class="bgimg-3">
+        <div class="container">
+            <div class="row">
+                <div class="column-33">
+                    <img src="./img/workgod2.png" width="800" height="600" style="margin: 70px -10px;">
+                </div>
+                <div class="column-66">
+                    <!-- -加入文字邊框屬性webkit-text-stroke -->
+                    <h1 class="large-font" style="color:#fff;-webkit-text-stroke: 2px #A80000;"><b>拜月老的流程步驟</b></h1>
+                    <p style="color:#fff;-webkit-text-stroke: 0.5px #FFC559;">
+                        <b>1.帶著虔誠的心，先到香鋪購買金紙、香以及準備好兩份供品，一份給廟裡的神明，一份給月老<br>
+
+                            2.點燃三炷香，先拜天公，有禮貌的自我介紹，默念姓名、地址、生日及年齡，持香三拜<br>
+
+                            3.按照該廟宇的參拜順序依序拜完，並儘量清楚地告訴月老你喜歡的類型、條件，若有對象則要說清楚對方的姓名、生日，先不插香<br>
+
+                            4.參拜結束，回到天公爐三拜，將三炷香一起插在天公爐，再合掌三拜<br>
+
+                            5.向月老擲筊求紅線，連擲三次聖杯可以帶走紅線，再到天公爐將紅線順時鐘轉三圈過爐，妥善收好
+
+                        </b>
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="position:relative;">
+        <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+            <p>代拜服務是由受過專業訓練的代拜員對應信眾祈求項目，如求財、姻緣、健康、事業、學業等選擇宮廟及神祇進行參拜，為求過程慎重虔敬，均會攜帶高級檀香，並在祭拜的香上雷雕出祈願者姓名、生日、客製祈願內容及疏文等，親至廟宇參拜，請點選
+                <span  class="seesee"><a href="./my_product.html"><u>【查看更多】</u></a></span></p>
+        </div>
+    </div>
+
+    <div class="bgimg-1">
+        <div class="container">
+            <div class="row">
+                <div class="column-66">
+                    <!-- -加入文字邊框屬性webkit-text-stroke -->
+                    <h1 class="large-font" style="color:#fff;-webkit-text-stroke: 2px #A80000;"><b>準備供品小技巧</b></h1>
+                    <p style="color:#fff;-webkit-text-stroke: 0.5px #FFC559;">
+                        <b>
+                            給月老的供品一定要是雙數，種類可以選擇巧克力、糖果等甜食，因為月老喜歡吃甜的，吃甜食才會幫你講好話喔！習俗中也有一些有諧音的供品，增加祈福意義，大家可以參考看看：<br>
+                            紅棗：早日找到好對象<br>
+                            枸杞：人氣滿滿<br>
+                            桂圓：表示圓滿<br>
+                            鮮花：開花結果<br>
+                            筷子＋來一客：好對象快來
+                        </b>
+                    </p>
+                </div>
+                <div class="column-33">
+                    <img src="./img/comeone.png" width="800" height="600" style="margin: 120px 10px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

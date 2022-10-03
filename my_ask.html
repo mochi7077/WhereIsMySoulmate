@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>線上求籤</title>
+    <style>
+        /* 分二邊 */
+
+        body {
+            font-family: Arial;
+            color: white;
+        }
+
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            /* padding-top: 20px; */
+        }
+
+        .left {
+            left: 0;
+            background-size: cover;
+            background-image: linear-gradient(rgba(250, 250, 250, 0.5), rgba(255, 255, 255, 0.5)), url(img/ask/askb04.jpg);
+        }
+
+        .right {
+            right: 0;
+            background-size: cover;
+            background-image: linear-gradient(rgba(250, 250, 250, 0.3), rgba(255, 255, 255, 0.5)), url(img/ask/ask_back02.jpg);
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .centered img {
+            width: 500px;
+            height: 500px;
+        }
+
+        /* 第？籤 */
+        #result {
+            color: #D10000;
+            font-size: 40px;
+        }
+
+        /* 下好離手 */
+        #btnend,
+        #btnsee {
+            /* background-image: url(./img/daz10.jpg); */
+            background-color: transparent;
+            border-color: #878787;
+            border-radius: 5px;
+            ;
+            width: 150px;
+            height: 40px;
+            font-weight: bold;
+            font-size: 20px;
+            color: #AD0000;
+            cursor: pointer;
+        }
+
+        #btnend:hover,
+        #btnsee:hover {
+            background-color: #FFD78C;
+        }
+
+
+
+
+        /* 讓圖片抖動 */
+        img:hover {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+
+
+
+
+        }
+    </style>
+
+    <!-- 導覽列加入 -->
+    <link href="css/topnav.css" rel="stylesheet">
+
+    <!-- 背景圖加入 -->
+    <link href="css/background_image.css" rel="stylesheet">
+
+    <!-- 右方滾輪加入 -->
+    <link href="css/scrollbar.css" rel="stylesheet">
+
+    <!-- 加入頁簽小圖 -->
+    <link rel="shortcut icon" href="img/1657382571.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <!-- 以下是上方欄 -->
+    <b>
+        <div class="topnav" id="myTopnav" style="display:flex;background-color: #B95756;opacity: 0.8;">
+          <a href="my_study.html" style="flex:1;font-size: 20px">月老學堂<br><span style="font-size: 10px;">Matchmaking God's School</span></a>
+          <a href="my_ask.html" class="active" style="flex:1;font-size: 20px">線上求籤<br><span style="font-size: 10px;">Online Draw Lots</span></a>
+          <a href="my_index.html" style="flex:2;font-size: 20px">姻緣在哪兒<br><span style="font-size: 10px;">Where Is My Soulmate</span></a>
+          <!-- <button><img src="img/rabbit.png" style="position:contain;height:300px;"></button> -->
+          <a href="my_product.html" style="flex:1;font-size: 20px">代客拜拜<br><span style="font-size: 10px;">Valet Worship</span></a>
+          <a href="my_login.html" style="flex:1;font-size: 20px">訂單管理<br><span style="font-size: 10px;">Order Management</span></a>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          </a>
+        </div>
+      </b>
+
+    <div class="split left">
+        <div class="centered">
+            <button id="submit" style="background-color: transparent;border: none;cursor: pointer;" onclick="begin();">
+                <img src="img/ask/60.png" alt="Pineapple" width="300" height="300">
+            </button>
+        </div>
+    </div>
+
+    <div class="split right">
+        <div class="centered">
+            <h1 style="color: #B80000;line-height: 28px;">求籤步驟
+                <br><span style="font-size: 15px;"> Draw Lots</span>   
+            </h1>
+            <ol style="text-align: left;color: #A80000;line-height: 15px;">
+                <li>虔誠向媽祖稟報您的姓名、年歲、住址、求問事項。
+                    <br><span style="font-size: 10px;">Respectfully report your name, age, address, and inquiries to Mazu.
+                </li>
+                <li>點選籤筒開始求籤。
+                    <br><span style="font-size: 10px;">Click on the signature box to start asking for signatures.</span>
+                </li>
+                <!-- <li>擲筊請示媽祖是否為此籤。</li>
+                <li>若為聖筊則可觀看詩籤內容。</li>
+                <li>若為笑筊或陰筊則需重新求籤。</li> -->
+            </ol>
+
+            <div>
+                <h1 id="result">抽個上上籤</h1>
+                <button id="btnend" onclick="end();">下好離手</button>
+                <button id="btnsee" onclick="see();">查看籤詩</button>
+
+                <!-- <h3 style="color: black;">籤詩內容</h3>
+                <p id="stick" style="color: black;"></p> -->
+                <br><br><br>
+                <form>
+                    <fieldset>
+                        <legend style="color: black;font-size: 22px;font-weight:bold;">籤詩內容</legend>
+                        <label id="stick" style="color: black;font-size: 18px;"></label>
+                        <!-- <input type="text" id="username"><br> -->
+                    </fieldset>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        //籤的陣列
+        var names = [
+            '第一籤－甲子', '第二籤－甲寅', '第三籤－甲辰', '第四籤－甲午', '第五籤－甲申', '第六籤－甲戌', '第七籤－乙丑', '第八籤－乙卯', '第九籤－乙巳', '第十籤－乙未', '第十一籤－乙酉', '第十二籤－乙亥',
+            '第十三籤－丙子', '第十四籤－丙寅', '第十五籤－丙辰', '第十六籤－丙午', '第十七籤－丙申', '第十八籤－丙戌', '第十九籤－丁丑', '第二十籤－丁卯', '第二十一籤－丁巳', '第二十二籤－丁未', '第二十三籤－丁酉', '第二十四籤－丁亥',
+            '第二十五籤－戊子', '第二十六籤－戊寅', '第二十七籤－戊辰', '第二十八籤－戊午', '第二十九籤－戊申', '第三十籤－戊戌', '第三十一籤－己丑', '第三十二籤－己卯', '第三十三籤－己巳', '第三十四籤－己未', '第三十五籤－己酉', '第三十六籤－己亥',
+            '第三十七籤－庚子', '第三十八籤－庚寅', '第三十九籤－庚辰', '第四十籤－庚午', '第四十一籤－庚申', '第四十二籤－庚戌', '第四十三籤－辛丑', '第四十四籤－辛卯', '第四十五籤－辛巳', '第四十六籤－辛未', '第四十七籤－辛酉', '第四十八籤－辛亥',
+            '第四十九籤－壬子', '第五十籤－壬寅', '第五十一籤－壬辰', '第五十二籤－壬午', '第五十三籤－壬申', '第五十四籤－壬戌', '第五十五籤－癸丑', '第五十六籤－癸卯', '第五十七籤－癸巳', '第五十八籤－癸未', '第五十九籤－癸酉', '第六十籤－癸亥',
+
+        ];
+
+        var name;
+        var index = -1;
+        var time;
+
+        // 籤筒開始抽籤
+        function begin() {
+            document.getElementById("submit").disabled = true;
+            chouqian();
+        }
+
+
+        // 抽籤吧
+        function chouqian() {
+            if (names.length > 0) {
+                index = Math.floor(Math.random() * 1000 % names.length);
+                name = names[index];
+                document.getElementById("result").innerHTML = name;
+
+                time = window.setTimeout(chouqian, 2);
+            }
+
+        }
+
+        // 下好離手
+        function end() {
+            window.clearTimeout(time);
+            document.getElementById("btnBegin").disabled = false;
+            names.splice(index, 1);
+        }
+
+        // 籤詩內容
+        function see() {
+            poetry = document.getElementById("result");
+            console.log(poetry.innerText);
+
+            switch (poetry.innerText) {
+                case '第一籤－甲子':
+                    x = "日出便見風雲散，光明清淨照世間，一向前途通大道，萬事清吉保平安。";
+                    break;
+
+
+                case '第二籤－甲寅':
+                    x = "於今此景正當時，看看欲吐百花魁，若能遇得春色到，一洒清吉脫塵埃。";
+                    break;
+
+
+                case '第三籤－甲辰':
+                    x = "勸君把定心莫虛，天註衣祿自有餘，和合重重常吉慶，時來終遇得明珠。";
+                    break;
+
+
+                case '第四籤－甲午':
+                    x = "風恬浪靜可行舟，恰是中秋月一輪，凡事不須多憂慮，福祿自有慶家門。";
+                    break;
+
+
+                case '第五籤－甲申':
+                    x = "只恐前途命有變 ，勸君作急可宜先，且守長江無大事，命逢太白守身邊。";
+                    break;
+
+
+                case '第六籤－甲戌':
+                    x = "風雲致雨落洋洋，天災時氣必有傷，命內此事難和合，更逢一足出外鄉。";
+                    break;
+
+
+                case '第七籤－乙丑':
+                    x = "雲開月出正分明，不須進退問前程，婚姻皆由天註定，和合清吉萬事成。";
+                    break;
+
+
+                case '第八籤－乙卯':
+                    x = "禾稻看看結成完，此事必定兩相全，回到家中寬心坐，妻兒皷腹樂團圓。";
+                    break;
+
+
+                case '第九籤－乙巳':
+                    x = "龍虎相隨在深山，君爾何須背後看，不知此去相愛愉，他日與我卻無干。";
+                    break;
+
+
+                case '第十籤－乙未':
+                    x = "花開結子一半枯，可惜今年汝虛度，漸漸日落西山去，勸君不用向前途。";
+                    break;
+
+
+                case '第十一籤－乙酉':
+                    x = "靈雞漸漸見分明，凡事且看子丑寅，雲開月出照天下，郎君即便見太平。";
+                    break;
+
+
+                case '第十二籤－乙亥':
+                    x = "長江風浪漸漸靜，于今得進可安寧，必有貴人相扶助，凶事脫出見太平。";
+                    break;
+
+
+                case '第十三籤－丙子':
+                    x = "命中正逢羅孛關，用盡心機總未休，作福問神難得過，恰是行舟上高灘。";
+                    break;
+
+
+                case '第十四籤－丙寅':
+                    x = "財中漸漸見分明，花開花謝結子成，寬心且看月中桂，郎君即便見太平。";
+                    break;
+
+
+                case '第十五籤－丙辰':
+                    x = "八十原來是太公，看看晚景遇文王，目下緊事休相問，勸君且守待運通。";
+                    break;
+
+
+                case '第十六籤－丙午':
+                    x = "不須作福不須求，用盡心機總未休，陽世不知陰世事，官法如爐不自由。";
+                    break;
+
+
+                case '第十七籤－丙申':
+                    x = "舊恨重重未改為，家中禍患不臨身，須當謹防宜作福，龍蛇交會得和合。";
+                    break;
+
+
+                case '第十八籤－丙戌':
+                    x = "君問中間此言因，看看祿馬拱前程，若得貴人多得利，和合自有兩分明。";
+                    break;
+
+
+                case '第十九籤－丁丑':
+                    x = "富貴由命天註定，心高必然誤君期，不然且回依舊路，雲開月出自分明。";
+                    break;
+
+
+                case '第二十籤－丁卯':
+                    x = "前途功名未得意，只恐命內有交加，兩家必定防損失，勸君且退莫咨嗟。";
+                    break;
+
+
+                case '第二十一籤－丁巳':
+                    x = "十方佛法有靈通，大難禍患不相同，紅日當空常照耀，還有貴人到家堂。";
+                    break;
+
+
+                case '第二十二籤－丁未':
+                    x = "太公家業八十成，月出光輝四海明，命內自然逢大吉，茅屋中間百事亨。";
+                    break;
+
+
+                case '第二十三籤－丁酉':
+                    x = "欲去長江水闊茫，前途未遂運未通，如今絲綸常在手，只恐魚水不相逢。";
+                    break;
+
+
+                case '第二十四籤－丁亥':
+                    x = "月出光輝四海明，前途祿位見太平，浮雲掃退終無事，可保禍患不臨身。";
+                    break;
+
+
+                case '第二十五籤－戊子':
+                    x = "總是前途莫心勞，求神問聖枉是多，但看雞犬日過後，不須作福事如何。";
+                    break;
+
+
+                case '第二十六籤－戊寅':
+                    x = "選出牡丹第一枝，勸君折取莫遲疑，世間若問相知處，萬事逢春正及時。";
+                    break;
+
+
+                case '第二十七籤－戊辰':
+                    x = "君爾寬心且自由，門庭清吉家無憂，財寶自然終吉利，凡事無傷不用求。";
+                    break;
+
+
+                case '第二十八籤－戊午':
+                    x = "於今莫作此當時，虎落平陽被犬欺，世間凡事何難定，千山萬水也遲疑。";
+                    break;
+
+
+                case '第二十九籤－戊申':
+                    x = "枯木可惜未逢春，如今反在暗中藏，寬心且守風霜退，還君依舊作乾坤。";
+                    break;
+
+
+                case '第三十籤－戊戌':
+                    x = "漸漸看此月中和，過後須防未得高，改變顏色前途去，凡事必定見重勞。";
+                    break;
+
+
+                case '第三十一籤－己丑':
+                    x = "綠柳蒼蒼正當時，任君此去作乾坤，花果結實無殘謝，福祿自有慶家門。";
+                    break;
+
+
+                case '第三十二籤－己卯':
+                    x = "龍虎相交在門前，此事必定兩相連，黃金忽然變成鐵，何用作福問神仙。";
+                    break;
+
+
+                case '第三十三籤－己巳':
+                    x = "欲去長江水闊茫，行舟把定未遭風，戶內用心再作福，看看魚水得相逢。";
+                    break;
+
+
+                case '第三十四籤－己未':
+                    x = "危險高山行過盡，莫嫌此路有重重，若見蘭桂漸漸發，長蛇反轉變成龍。";
+                    break;
+
+
+                case '第三十五籤－己酉':
+                    x = "此事何須用心機，前途變怪自然知，看看此去得和合，漸漸脫出見太平。";
+                    break;
+
+
+                case '第三十六籤－己亥':
+                    x = "福如東海壽如山，君爾何須嘆苦難，命內自然逢大吉，祈保分明自平安。";
+                    break;
+
+
+                case '第三十七籤－庚子':
+                    x = "運逢得意身顯變，君爾身中皆有益，一向前途無難事，決意之中保清吉。";
+                    break;
+
+
+                case '第三十八籤－庚寅':
+                    x = "名顯有意在中央，不須祈禱心自安，看看早晚日過後，即時得意在其間。";
+                    break;
+
+
+                case '第三十九籤－庚辰':
+                    x = "意中若問神仙路，勸爾且退望高樓，寬心且守寬心坐，必然遇得貴人扶。";
+                    break;
+
+
+                case '第四十籤－庚午':
+                    x = "平生富貴成祿位，君家門戶定光輝，此中必定無損失，夫妻百歲喜相隨。";
+                    break;
+
+
+                case '第四十一籤－庚申':
+                    x = "今行到此實難推，歌歌暢飲自徘徊，雞犬相聞消息近，婚姻夙世結成雙。";
+                    break;
+
+
+                case '第四十二籤－庚戌':
+                    x = "一重江水一重山，誰知此去路又難，任他改求終不過，是非終久未得安。";
+                    break;
+
+
+                case '第四十三籤－辛丑':
+                    x = "一年作事急如飛，君爾寬心莫遲疑，貴人還在千里外，音信月中漸漸知。";
+                    break;
+
+
+                case '第四十四籤－辛卯':
+                    x = "客到前途多得利，君爾何故兩相疑，雖是中間逢進退，月出光輝得運時。";
+                    break;
+
+
+                case '第四十五籤－辛巳':
+                    x = "花開今已結成果，富貴榮華終到老，君子小人相會合，萬事清吉莫煩惱。";
+                    break;
+
+
+                case '第四十六籤－辛未':
+                    x = "功名得意與君顯，前途富貴喜安然，若遇一輪明月照，十五團圓光滿天。";
+                    break;
+
+
+                case '第四十七籤－辛酉':
+                    x = "君爾何須問聖跡，自己心中皆有益，於今且看月中旬，凶事脫出化成吉。";
+                    break;
+
+
+                case '第四十八籤－辛亥':
+                    x = "陽世作事未和同，雲遮月色正朦朧，心中意欲前途去，只恐命內運未通。";
+                    break;
+
+
+                case '第四十九籤－壬子':
+                    x = "言語雖多不可從，風雲靜處未行龍，暗中終得明消息，君爾何須問重重。";
+                    break;
+
+
+                case '第五十籤－壬寅':
+                    x = "佛前發誓無異心，且看前途得好音，此物原來本是鐵，也能變化得成金。";
+                    break;
+
+
+                case '第五十一籤－壬辰':
+                    x = "東西南北不堪行，前途此事正可當，勸君把定莫煩惱，家門自有保安康。";
+                    break;
+
+
+                case '第五十二籤－壬午':
+                    x = "功名事業本由天，不須掛念意懸懸，若問中間遲與速，風雲際會在眼前。";
+                    break;
+
+
+                case '第五十三籤－壬申':
+                    x = "看君來問心中事，積善之家慶有餘，運亨財子雙雙至，指日喜氣溢門閭。";
+                    break;
+
+
+                case '第五十四籤－壬戌':
+                    x = "孤燈寂寂夜沉沉，萬事清吉萬事成，若逢陰中有善果，燒得好香達神明。";
+                    break;
+
+
+                case '第五十五籤－癸丑':
+                    x = "須知進退總虛言，看看發暗未必全，珠玉深藏還未變，心中但得枉徒然。";
+                    break;
+
+
+                case '第五十六籤－癸卯':
+                    x = "病中若得苦心勞，到底完全總未遭，去後不須回頭問，心中事務盡消磨。";
+                    break;
+
+
+                case '第五十七籤－癸巳':
+                    x = "勸君把定心莫虛，前途清吉得運時，到底中間無大事，又遇神仙守安居。";
+                    break;
+
+
+                case '第五十八籤－癸未':
+                    x = "蛇身意欲變成龍，只恐命內運未通，久病且作寬心坐，言語雖多不可從。";
+                    break;
+
+
+                case '第五十九籤－癸酉':
+                    x = "有心作福莫遲疑，求名清吉正當時，此事必能成會合，財寶自然喜相隨。";
+                    break;
+
+
+                case '第六十籤－癸亥':
+                    x = "月出光輝本清吉，浮雲總是蔽蔭色，戶內用心再作福，當官分理便有益。";
+                    break;
+
+            }
+            // document.write(x);
+            stick.innerHTML = x;
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>訂單管理</title>
+    <style>
+        body {
+            font-family: Arial;
+            color: black;
+            background-image: url(img/login/flower01.jpg);
+            
+        }
+
+        table {
+            border-collapse: collapse;
+            /* margin: center; */
+            display: block;
+            margin-left: 5%;
+            /* margin-right: 50%; */
+            text-align: center;
+            width: 100%;
+
+        }
+
+
+        /* 加入區塊 */
+
+        .accordion {
+            /* background-color: rgba(250, 250, 250, 0.7); */
+            /* background-color: #EBC2C0; */
+            /* background-color: #F08080; */
+            /* color: #444; */
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+            /* opacity: 0.8; */
+            font-weight: bold;
+
+
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #EED1CC;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: rgba(250, 250, 250, 0.864);
+            ;
+            overflow: hidden;
+        }
+
+
+        /* 地圖 */
+        .map {
+            margin-top: 1em;
+            float: left;
+            width: 50%;
+            padding-top: 30px;
+            padding-left: 30px;
+            padding-bottom: 30px;
+        }
+
+
+        /* 聯絡我們垂直置中 */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            width: 600px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            padding-left: 70px;
+
+        }
+
+        .wrap img {
+            /* width: 50%; */
+            vertical-align: middle;
+        }
+
+        .txt {
+            width: 50%;
+            vertical-align: middle;
+            padding-left: 20px;
+        }
+    </style>
+
+    <!-- 導覽列加入 -->
+    <link href="css/topnav.css" rel="stylesheet">
+
+    <!-- 右方滾輪加入 -->
+    <link href="css/scrollbar.css" rel="stylesheet">
+
+    <!-- 加入頁簽小圖 -->
+    <link rel="shortcut icon" href="img/1657382571.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <!-- 以下是上方欄 -->
+    <b>
+        <div class="topnav" id="myTopnav" style="display:flex;background-color: #B95756;opacity: 0.8;">
+            <a href="my_study.html" style="flex:1;font-size: 20px">月老學堂<br><span style="font-size: 10px;">Matchmaking
+                    God's School</span></a>
+            <a href="my_ask.html" style="flex:1;font-size: 20px">線上求籤<br><span style="font-size: 10px;">Online Draw
+                    Lots</span></a>
+            <a href="my_index.html" style="flex:2;font-size: 20px">姻緣在哪兒<br><span style="font-size: 10px;">Where Is My
+                    Soulmate</span></a>
+            <!-- <button><img src="img/rabbit.png" style="position:contain;height:300px;"></button> -->
+            <a href="my_product.html" style="flex:1;font-size: 20px">代客拜拜<br><span style="font-size: 10px;">Valet
+                    Worship</span></a>
+            <a href="my_login.html" class="active" style="flex:1;font-size: 20px">訂單管理<br><span
+                    style="font-size: 10px;">Order Management</span></a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            </a>
+        </div>
+    </b>
+
+    <br><br><br><br>
+
+
+
+    <!-- <h2 style="text-align: center;color: #B22222;font-size: 33px;">訂單資訊</h2> -->
+    <div class="wrap">
+        <img src="img/my_logo.png" alt="logo" style="height: 100px;width:100px;float:left;margin-left: 80px;">
+        <div>
+            <h2 style="color:#B22222;font-size: 40px;font-weight:lighter;">訂單資訊</h2>
+        </div>
+    </div>
+
+    <button class="accordion" style="background-color: #fe8692;font-size: 20px;">2022年07月14日</button>
+    <div class="panel">
+        <br>
+
+        <table>
+            <tr style=" border-bottom-style:double;">
+                <th style="width: 180px;">訂單編號</th>
+                <th style="width: 180px;">訂單時間</th>
+                <th style="width: 150px;">品項名稱</th>
+                <th style="width: 150px;">訂購金額</th>
+                <th style="width: 150px;">付款方式</th>
+                <th style="width: 150px;">發票號碼</th>
+                <th style="width: 150px;">訂單狀態</th>
+
+
+            </tr>
+            <tr>
+
+                <td>M2022071439889</td>
+                <td>2022/07/14 13:14</td>
+                <td>姻緣燈</td>
+                <td>2500元</td>
+                <td>信用卡</td>
+                <td>MD-40666888</td>
+                <td>處理中</td>
+
+            </tr>
+
+        </table>
+        <br>
+    </div>
+
+    <button class="accordion" style="background-color: 	#A9A9A9;font-size: 20px;">2022年05月13日</button>
+    <div class="panel">
+        <br>
+
+        <table>
+            <tr style=" border-bottom-style:double;">
+                <th style="width: 180px;">訂單編號</th>
+                <th style="width: 180px;">訂單時間</th>
+                <th style="width: 150px;">品項名稱</th>
+                <th style="width: 150px;">訂購金額</th>
+                <th style="width: 150px;">付款方式</th>
+                <th style="width: 150px;">發票號碼</th>
+                <th style="width: 150px;">訂單狀態</th>
+
+
+            </tr>
+            <tr>
+
+                <td>M2022051332845</td>
+                <td>2022/05/13 04:53</td>
+                <td>藥師燈</td>
+                <td>2000元</td>
+                <td>信用卡</td>
+                <td>DP-28825252</td>
+                <td>已完成</td>
+
+            </tr>
+
+        </table>
+        <br>
+    </div>
+
+    <button class="accordion" style="background-color: 	#808080;font-size: 20px;">2022年01月20日</button>
+    <div class="panel">
+        <br>
+
+        <table>
+            <tr style=" border-bottom-style:double;">
+                <th style="width: 180px;">訂單編號</th>
+                <th style="width: 180px;">訂單時間</th>
+                <th style="width: 150px;">品項名稱</th>
+                <th style="width: 150px;">訂購金額</th>
+                <th style="width: 150px;">付款方式</th>
+                <th style="width: 150px;">發票號碼</th>
+                <th style="width: 150px;">訂單狀態</th>
+
+
+            </tr>
+            <tr>
+
+                <td>M2022012099379</td>
+                <td>2022/01/20 09:52</td>
+                <td>太歲燈</td>
+                <td>1500元</td>
+                <td>信用卡</td>
+                <td>HK-33456780</td>
+                <td>已完成</td>
+
+            </tr>
+
+        </table>
+        <br>
+    </div>
+
+    <br><br>
+
+    <form>
+        <fieldset>
+            <legend style="font-size: 25px;">注意事項</legend>
+            <ol style="color: black;">
+                <li>我司將於收到申請資料後10天內完成安奉作業。</li>
+                <li>訂單填寫交易完成後，以電子郵件寄送確認單給予信眾；收據的部份將於15天內以電子郵件的方式寄送收據。（不寄紙本收據，如需紙本收據請自行列印）</li>
+                <li>使用信用卡完成點燈付款後，如欲取消或申請退款者，請於7天內提出申請；若超過期限，恕無法取消及申請退款。</li>
+                <li>如操作上有任何疑問，請於服務時間聯繫。</li>
+
+            </ol>
+        </fieldset>
+    </form>
+
+
+    <section3>
+        <div class="info">
+            <div class="container">
+                <div class="wrap">
+                    <img src="img/my_logo.png" alt="logo" style="height: 100px;width:100px;float:left;margin-left: 70px;">
+                    <div>
+                        <h2 style="color:#FF6347;font-size: 40px;font-weight:lighter;">聯絡我們</h2>
+                    </div>
+                </div>
+                <div class="map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.604292585092!2d120.64881961536761!3d24.150531079288644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d9650422ae1%3A0x334dfd5796c49ff6!2z6LOH562W5pyDLeaVuOS9jeaVmeiCsueglOeptuaJgC3kuK3ljYDoqJPnt7TkuK3lv4M!5e0!3m2!1szh-TW!2stw!4v1657597833286!5m2!1szh-TW!2stw"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="form">
+
+                    <div>
+
+                        <div class="wrap" style="padding-top: 30px;">
+                            <img src="img/manage/time.png" alt="服務時間" style="height: 50px;width:50px;float:left;">
+                            <div class="txt">
+                                <h2 style="color:#CC5500;font-weight:lighter;">服務時間</h2>
+                                <p>周一～周五：09：00～18：00</p>
+                            </div>
+                        </div>
+
+                        <div class="wrap">
+                            <img src="img/manage/phone.png" alt="電話" style="height: 50px;width:50px;float:left;">
+                            <div class="txt">
+                                <h2 style="color:#CC5500;font-weight:lighter;">聯絡電話</h2>
+                                <p>(04)-2326-5860</p>
+                            </div>
+                        </div>
+
+                        <div class="wrap">
+                            <img src="img/manage/mail.png" alt="信箱" style="height: 50px;width:50px;float:left;">
+                            <div class="txt">
+                                <h2 style="color:#CC5500;font-weight:lighter;">客服信箱</h2>
+                                <p>service@notfound.com</p>
+                            </div>
+                        </div>
+
+                        <div class="wrap">
+                            <img src="img/manage/map.png" alt="地址" style="height: 50px;width:50px;float:left;">
+                            <div class="txt">
+                                <h2 style="color:#CC5500;font-weight:lighter;">公司位置</h2>
+                                <p>台中市南屯區公益路二段51號18樓</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section3>
+
+
+
+
+    <br>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

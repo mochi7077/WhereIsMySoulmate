@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>訂單管理</title>
+
+  <style>
+    .split {
+      height: 100%;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      overflow-x: hidden;
+      padding-top: 0px;
+
+    }
+
+    .left {
+      left: 0;
+      background-image: url(img/login/daz02.jpg);
+      width: 40%;
+      padding-left: 1em;
+      padding-right: 1em;
+      line-height: 150%;
+
+    }
+
+    .right {
+      right: 0;
+      background-image: url(./img/hotlove01.jpg);
+      background-repeat: no-repeat;
+      width: 60%;
+
+    }
+
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      /* transform指定X和Y軸上的平移。 */
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    /* ------------------------------------------------------------- */
+
+    /* 框框內所有字的大小 */
+    #username,
+    #password,
+    h3,
+    #fullname,
+    #comfirm_password,
+    #username2,
+    #password2 {
+      width: 200px;
+      height: 20px;
+      margin: 10px;
+      color: #df5334;
+    }
+
+    /* 右下註冊帳號or登錄帳號 */
+    h5 {
+      margin: 20px;
+      color: #a3a2a3;
+      /* cursor改變滑鼠游標的形狀 */
+      cursor: pointer;
+    }
+
+    h5:hover {
+      color: black;
+    }
+
+    #container1,
+    #container2 {
+      /* margin-top: 500px; */
+      position: absolute;
+      padding: 10px;
+      width: 230px;
+      height: 30px;
+      /* background-color: white; */
+      border-radius: 5px;
+      /* border-top: 10px solid #df5334; */
+      /* box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1); */
+
+      /*定位對齊*/
+      position: relative;
+      margin: auto;
+      top: 100px;
+      /* //text-align:center;   */
+    }
+
+    .login_title {
+      /*定位對齊*/
+      position: relative;
+      margin: auto;
+      top: 100px;
+      text-align: center;
+    }
+
+    .submit {
+      color: black;
+      border-radius: 5px;
+      /* border: 0px; */
+      border-color: #5E5E5E;
+      background: transparent;
+      width: 200px;
+      height: 30px;
+      margin: 10px;
+      padding: 5px;
+      /* cursor改變滑鼠游標的形狀 */
+      cursor: pointer;
+
+    }
+
+    .submit:hover {
+      background: #D4D4D4;
+    }
+
+    #container2 {
+      visibility: hidden;
+      /*剛開始消失*/
+      height: 350px;
+    }
+
+
+    input {
+      padding: 5px;
+      border: none;
+      border: solid 1px #ccc;
+      border-radius: 5px;
+    }
+  </style>
+
+  <!-- 導覽列加入 -->
+  <link href="css/topnav.css" rel="stylesheet">
+
+  <!-- 右方滾輪加入 -->
+  <link href="css/scrollbar.css" rel="stylesheet">
+
+  <!-- 加入頁簽小圖 -->
+  <link rel="shortcut icon" href="img/1657382571.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
+  <!-- 以下是上方欄 -->
+  <b>
+    <div class="topnav" id="myTopnav" style="display:flex;background-color: #B95756;opacity: 0.8;">
+      <a href="my_study.html" style="flex:1;font-size: 20px">月老學堂<br><span style="font-size: 10px;">Matchmaking God's School</span></a>
+      <a href="my_ask.html" style="flex:1;font-size: 20px">線上求籤<br><span style="font-size: 10px;">Online Draw Lots</span></a>
+      <a href="my_index.html" style="flex:2;font-size: 20px">姻緣在哪兒<br><span style="font-size: 10px;">Where Is My Soulmate</span></a>
+      <!-- <button><img src="img/rabbit.png" style="position:contain;height:300px;"></button> -->
+      <a href="my_product.html" style="flex:1;font-size: 20px">代客拜拜<br><span style="font-size: 10px;">Valet Worship</span></a>
+      <a href="my_login.html" class="active" style="flex:1;font-size: 20px">訂單管理<br><span style="font-size: 10px;">Order Management</span></a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      </a>
+    </div>
+  </b>
+
+  <!-- 左右板塊 -->
+  <div class="split left">
+    <div class="centered">
+      <!-- <img src="img_avatar2.png" alt="Avatar woman"> -->
+      <div class="login_title">
+        <!-- <h2 style="color:#FF5959;font-size:40px">查詢訂單</h2> -->
+        <img src="img/my_logo.png" alt="logo" style="height: 130px;width:130px;display:block; margin:auto;">
+      </div>
+
+      <div class="login_page">
+        <div id="container1">
+
+          <div class="login">
+
+            <h3>免註冊查詢訂單</h3>
+
+            <form action="my_manage.html">
+              <input type="text" id="username" name="username" placeholder="手機號碼：0900092000">
+              <!-- placeholder = 輸入框內預設的字 -->
+              <div class="tab"></div>
+              <input type="password" id="password" name="password" placeholder="8位數生日：19990909">
+              <div class="tab"></div>
+              <input type="submit" value="查詢" class="submit">
+              <!-- 登錄按鈕的連結 -->
+            </form>
+
+            <h5 onclick="show_hide()">註冊帳號</h5>
+
+          </div><!-- login end-->
+        </div><!-- container1 end-->
+      </div><!-- login_page end-->
+
+      <div class="signup_page" id="container2">
+
+        <div class="signup">
+
+          <h3>註冊 Sign Up</h3>
+
+          <form action="my_manage.html">
+            <input type="text" id="fullname" name="fullname" placeholder="使用者全名" required>
+            <div class="tab"></div>
+            <input type="text" id="username2" name="username" placeholder="帳號" required>
+            <div class="tab"></div>
+            <input type="password" id="password2" name="password" placeholder="密碼" required>
+            <div class="tab"></div>
+            <input type="password" id="comfirm_password" name="comfirm_password" placeholder="確認密碼" required>
+            <div class="tab"></div>
+            <input type="submit" value="註冊" class="submit">
+          </form>
+
+          <h5 onclick="show_hide()">登錄帳號</h5>
+
+        </div><!-- signup end-->
+      </div><!-- container2 end-->
+    </div><!-- signup_page end-->
+  </div>
+
+  </div>
+
+  <div class="split right">
+    <div class="centered">
+    </div>
+  </div>
+
+  <!-- ------------------------------------------- -->
+
+
+  <script>function show_hide() {
+      var login = document.getElementById("container1");
+      var signup = document.getElementById("container2");
+
+      if (login.style.display === "none") {
+        login.style.display = "block";  //lonin出現
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+        signup.style.display = "none";  //signup消失
+      } else {
+        login.style.display = "none";   //login消失
+        signup.style.display = "block"; //signup出現
+        signup.style.visibility = "visible";
+
+        document.getElementById("fullname").value = "";
+        document.getElementById("username2").value = "";
+        document.getElementById("password2").value = "";
+        document.getElementById("comfirm_password").value = "";
+      }
+    }
+
+  </script>
+
+
+</body>
+
+</html>
